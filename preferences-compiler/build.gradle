@@ -1,0 +1,23 @@
+apply plugin: 'java-library'
+//apply plugin: 'com.github.dcendents.android-maven'
+//apply plugin: 'com.jfrog.bintray'
+
+dependencies {
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+	compile project(path: ':preferences-annotations')
+
+	compile 'com.squareup:javapoet:1.11.1'
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+//
+//install {
+//	repositories.mavenInstaller {
+//		pom.project {
+//			groupId "com.autopreference"
+//			artifactId "compiler"
+//			version "1.0.0"
+//		}
+//	}
+//}
