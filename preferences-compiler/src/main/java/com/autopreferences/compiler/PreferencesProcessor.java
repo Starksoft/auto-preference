@@ -1,4 +1,4 @@
-package com.autopreferences.processor;
+package com.autopreferences.compiler;
 
 import com.autopreferences.annotations.PreferenceKey;
 import com.autopreferences.annotations.SharedPreference;

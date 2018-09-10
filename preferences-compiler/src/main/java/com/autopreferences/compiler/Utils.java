@@ -1,4 +1,4 @@
-package com.autopreferences.processor;
+package com.autopreferences.compiler;
 
 import java.util.List;
 
