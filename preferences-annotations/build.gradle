@@ -12,7 +12,7 @@ targetCompatibility = "1.8"
 ext.artifact = [
 		'groupId': 'com.autopreference',
 		'id'     : 'preferences-annotations',
-		'version': '1.0.1',
+		'version': '1.0.0',
 		'siteUrl': 'https://github.com/Starksoft/auto-preference',
 		'gitUrl' : 'https://github.com/Starksoft/auto-preference.git'
 ]
@@ -71,7 +71,7 @@ bintray {
 
 	configurations = ['archives']
 	pkg {
-		repo = "com.autopreference"
+		repo = "AutoPreference"
 		name = artifact.id
 		websiteUrl = artifact.siteUrl
 		vcsUrl = artifact.gitUrl
