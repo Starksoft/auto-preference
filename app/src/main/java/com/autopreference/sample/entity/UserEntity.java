@@ -1,4 +1,4 @@
-package sample.autopreference.com.autopreferencesample.entity;
+package com.autopreference.sample.entity;
 
 import android.support.annotation.NonNull;
 
