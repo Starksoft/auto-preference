@@ -28,18 +28,19 @@ public class SingleFragmentActivity extends AppCompatActivity {
 
 		String screenKey = getIntent().getExtras().getString(SCREEN_KEY);
 
-		openFragment(screenKey);
+		if (screenKey != null) {
+			openFragment(screenKey);
+		}
 	}
 
 	private void openFragment(String screenKey) {
-
 
 		Fragment fragment = null;
 
 		switch (screenKey) {
 
 			case DefaultSharedPreferencesFragment.TAG:
-				DefaultSharedPreferencesFragment.newInstance();
+				fragment = DefaultSharedPreferencesFragment.newInstance();
 				break;
 
 			case UserPreferenceFragment.TAG:
@@ -50,6 +51,5 @@ public class SingleFragmentActivity extends AppCompatActivity {
 		if (fragment != null) {
 			getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
 		}
-
 	}
 }

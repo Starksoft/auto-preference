@@ -1,8 +1,11 @@
 package com.autopreferences.compiler;
 
+import com.autopreferences.annotations.SharedPreference;
+
 import java.util.List;
 
 import javax.lang.model.element.Element;
+import javax.lang.model.element.TypeElement;
 
 public final class Utils {
 
@@ -16,5 +19,9 @@ public final class Utils {
 
 	static boolean isNullOrEmpty(List<? extends Element> enclosedElements) {
 		return enclosedElements == null || enclosedElements.isEmpty();
+	}
+
+	static String getPreferenceFullName(TypeElement typeElement) {
+		return camelCase(typeElement.getAnnotation(SharedPreference.class).name()) + "Preferences";
 	}
 }

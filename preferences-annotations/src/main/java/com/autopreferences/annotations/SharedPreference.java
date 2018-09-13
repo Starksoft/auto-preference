@@ -7,11 +7,14 @@ import java.lang.annotation.Target;
 
 /**
  * Used for annotate Entity class
+ *
+ * @param name                     - name of SharedPreference and of generated file
+ * @param defaultSharedPreferences - Use PreferenceManager.getDefaultSharedPreferences() or context.getSharedPreferences(name). true by default
  */
 @Retention(RetentionPolicy.SOURCE)
 @Target(ElementType.TYPE)
 public @interface SharedPreference {
 	String name();
 
-	boolean defaultSharedPreferences() default false;
+	boolean defaultSharedPreferences() default true;
 }

@@ -5,6 +5,6 @@
 	android:id="@+id/content_frame"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context="sample.autopreference.com.sample.SingleFragmentActivity">
+	tools:context="com.autopreference.sample.SingleFragmentActivity">
 
 </FrameLayout>

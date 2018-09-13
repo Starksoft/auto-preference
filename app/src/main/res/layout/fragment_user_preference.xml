@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:layout_margin="8dp"
+	android:gravity="center_horizontal"
+	android:orientation="vertical">
+
+	<CheckBox
+		android:id="@+id/userEnabled"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:padding="8dp"
+		android:text="User enabled" />
+
+	<EditText
+		android:id="@+id/userName"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:hint="User name"
+		android:inputType="textNoSuggestions"
+		android:minWidth="150dp"
+		android:padding="8dp" />
+
+	<EditText
+		android:id="@+id/userId"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:hint="User id"
+		android:inputType="numberDecimal"
+		android:minWidth="150dp"
+		android:padding="8dp" />
+
+</LinearLayout>
