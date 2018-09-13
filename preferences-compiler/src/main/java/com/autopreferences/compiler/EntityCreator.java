@@ -120,6 +120,9 @@ final class EntityCreator {
 		// Clear preference
 		createRemoveAllMethod(builder, supportedFields, defaultSharedPreferences);
 
+		// isEmpty
+		createIsEmptyMethod(builder, supportedFields, defaultSharedPreferences);
+
 		try {
 			Common.generateFile(preferencesProcessor.getProcessingEnvironment(), builder.build());
 		} catch (IOException e) {
@@ -269,6 +272,22 @@ final class EntityCreator {
 		}
 	}
 
+	private void createIsEmptyMethod(TypeSpec.Builder builder, List<String> supportedFields, boolean defaultSharedPreferences) {
+
+		MethodSpec.Builder methodSpecBuilder = MethodSpec.methodBuilder("isEmpty")
+				.addModifiers(Modifier.PUBLIC)
+				.returns(TypeName.BOOLEAN)
+				.addStatement("SharedPreferences sharedPreferences = getSharedPreferences()");
+
+		for (int i = 0; i < supportedFields.size(); i++) {
+			String supportedField = supportedFields.get(i);
+			String code = (i == 0 ? "return" : "") + " !sharedPreferences.contains($S) " + (i == supportedFields.size() - 1 ? ";" : "&&");
+			methodSpecBuilder.addCode(code, supportedField);
+		}
+
+		builder.addMethod(methodSpecBuilder.build());
+	}
+
 	private void createEntityContainsMethod(TypeSpec.Builder builder, String annotationKey, String preferenceRealKey) {
 		builder.addMethod(MethodSpec.methodBuilder(Common.PREFIX_CONTAINS + Utils.camelCase(annotationKey))
 				                  .returns(TypeName.BOOLEAN)
@@ -276,5 +295,4 @@ final class EntityCreator {
 				                  .addStatement("return getSharedPreferences().contains($S)", preferenceRealKey)
 				                  .build());
 	}
-
 }
