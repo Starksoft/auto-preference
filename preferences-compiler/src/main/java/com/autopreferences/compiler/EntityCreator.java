@@ -43,6 +43,8 @@ final class EntityCreator {
 		SharedPreference typeElementAnnotation = typeElement.getAnnotation(SharedPreference.class);
 		String fileName = typeElementAnnotation.name();
 		boolean defaultSharedPreferences = typeElementAnnotation.defaultSharedPreferences();
+		boolean useCommit = typeElementAnnotation.useCommit();
+
 		String preferenceFullName = Utils.getPreferenceFullName(typeElement);
 		TypeSpec.Builder builder = TypeSpec.classBuilder(preferenceFullName).addModifiers(Modifier.FINAL, Modifier.PUBLIC);
 
@@ -107,18 +109,18 @@ final class EntityCreator {
 
 				supportedFields.add(preferenceRealKey);
 
-				createEntityPutMethod(builder, classType, annotationKey, preferenceRealKey, supportedType);
+				createEntityPutMethod(builder, classType, annotationKey, preferenceRealKey, supportedType, useCommit);
 
 				createEntityGetMethod(builder, classType, annotationKey, preferenceRealKey, supportedType);
 
-				createEntityRemoveMethod(builder, annotationKey, preferenceRealKey);
+				createEntityRemoveMethod(builder, annotationKey, preferenceRealKey, useCommit);
 
 				createEntityContainsMethod(builder, annotationKey, preferenceRealKey);
 			}
 		}
 
 		// Clear preference
-		createRemoveAllMethod(builder, supportedFields, defaultSharedPreferences);
+		createRemoveAllMethod(builder, supportedFields, defaultSharedPreferences, useCommit);
 
 		// isEmpty
 		createIsEmptyMethod(builder, supportedFields, defaultSharedPreferences);
@@ -130,10 +132,12 @@ final class EntityCreator {
 		}
 	}
 
-	private void createEntityRemoveMethod(TypeSpec.Builder builder, String annotationKey, String preferenceRealKey) {
+	private void createEntityRemoveMethod(TypeSpec.Builder builder, String annotationKey, String preferenceRealKey, boolean useCommit) {
 		builder.addMethod(MethodSpec.methodBuilder(Common.PREFIX_REMOVE + Utils.camelCase(annotationKey))
 				                  .addModifiers(Modifier.PUBLIC)
-				                  .addStatement("getSharedPreferences().edit().remove($S).apply()", preferenceRealKey)
+				                  .addStatement("getSharedPreferences().edit().remove($S).$L()",
+				                                preferenceRealKey,
+				                                (useCommit ? "commit" : "apply"))
 				                  .build());
 	}
 
@@ -154,14 +158,14 @@ final class EntityCreator {
 	}
 
 	private void createEntityPutMethod(TypeSpec.Builder builder, TypeName classType, String annotationKey, String preferenceRealKey,
-	                                   SupportedTypes supportedType) {
+	                                   SupportedTypes supportedType, boolean useCommit) {
 		builder.addMethod(MethodSpec.methodBuilder(Common.PREFIX_PUT + Utils.camelCase(annotationKey))
 				                  .returns(TypeName.VOID)
 				                  .addModifiers(Modifier.PUBLIC)
 				                  .addParameter(ParameterSpec.builder(classType, "value").build())
-				                  .addStatement(
-						                  "getSharedPreferences().edit()." + supportedType.getMethodName(false) + "($S, value).apply()",
-						                  preferenceRealKey)
+				                  .addStatement("getSharedPreferences().edit()." + supportedType.getMethodName(false) + "($S, value).$L()",
+				                                preferenceRealKey,
+				                                (useCommit ? "commit" : "apply"))
 				                  .build());
 	}
 
@@ -251,7 +255,8 @@ final class EntityCreator {
 				                  .build());
 	}
 
-	private void createRemoveAllMethod(TypeSpec.Builder builder, List<String> supportedFields, boolean defaultSharedPreferences) {
+	private void createRemoveAllMethod(TypeSpec.Builder builder, List<String> supportedFields, boolean defaultSharedPreferences,
+	                                   boolean useCommit) {
 		if (defaultSharedPreferences) {
 			MethodSpec.Builder methodSpecBuilder = MethodSpec.methodBuilder(Common.PREFIX_REMOVE + "All")
 					.addModifiers(Modifier.PUBLIC)
@@ -261,13 +266,13 @@ final class EntityCreator {
 				methodSpecBuilder.addStatement("editor.remove($S)", supportedField);
 			}
 
-			methodSpecBuilder.addStatement("editor.apply()");
+			methodSpecBuilder.addStatement("editor.$L()", (useCommit ? "commit" : "apply"));
 			builder.addMethod(methodSpecBuilder.build());
 
 		} else {
 			builder.addMethod(MethodSpec.methodBuilder(Common.PREFIX_REMOVE + "All")
 					                  .addModifiers(Modifier.PUBLIC)
-					                  .addStatement("getSharedPreferences().edit().clear().apply()")
+					                  .addStatement("getSharedPreferences().edit().clear().$L()", (useCommit ? "commit" : "apply"))
 					                  .build());
 		}
 	}

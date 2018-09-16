@@ -12,7 +12,7 @@ targetCompatibility = "1.8"
 ext.artifact = [
 		'groupId': 'com.autopreference',
 		'id'     : 'preferences-annotations',
-		'version': '1.0.2',
+		'version': '1.0.3',
 		'siteUrl': 'https://github.com/Starksoft/auto-preference',
 		'gitUrl' : 'https://github.com/Starksoft/auto-preference.git'
 ]

@@ -17,4 +17,6 @@ public @interface SharedPreference {
 	String name();
 
 	boolean defaultSharedPreferences() default true;
+
+	boolean useCommit() default true;
 }
