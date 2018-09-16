@@ -105,13 +105,14 @@ final class EntityCreator {
 				}
 
 				String annotationKey = preferenceKeyAnnotation.value();
+				boolean generateDefaultOverloadMethod = preferenceKeyAnnotation.generateDefaultOverloadMethod();
 				String preferenceRealKey = getPreferenceRealKey(fileName, annotationKey);
 
 				supportedFields.add(preferenceRealKey);
 
 				createEntityPutMethod(builder, classType, annotationKey, preferenceRealKey, supportedType, useCommit);
 
-				createEntityGetMethod(builder, classType, annotationKey, preferenceRealKey, supportedType);
+				createEntityGetMethod(builder, classType, annotationKey, preferenceRealKey, supportedType, generateDefaultOverloadMethod);
 
 				createEntityRemoveMethod(builder, annotationKey, preferenceRealKey, useCommit);
 
@@ -142,7 +143,7 @@ final class EntityCreator {
 	}
 
 	private void createEntityGetMethod(TypeSpec.Builder builder, TypeName classType, String annotationKey, String preferenceRealKey,
-	                                   SupportedTypes supportedType) {
+	                                   SupportedTypes supportedType, boolean generateDefaultOverloadMethod) {
 		String name = (supportedType.equals(SupportedTypes.BOOLEAN) ? PREFIX_IS : PREFIX_GET) + Utils.camelCase(annotationKey);
 		MethodSpec.Builder methodSpecBuilder = MethodSpec.methodBuilder(name).returns(classType).addModifiers(Modifier.PUBLIC).
 				addStatement("return getSharedPreferences().$L($S, $L)",
@@ -155,6 +156,23 @@ final class EntityCreator {
 		}
 
 		builder.addMethod(methodSpecBuilder.build());
+
+		// Method with default value as argument
+		if (generateDefaultOverloadMethod) {
+			MethodSpec.Builder defaultMethodSpecBuilder = MethodSpec.methodBuilder(name)
+					.returns(classType)
+					.addModifiers(Modifier.PUBLIC)
+					.addParameter(ParameterSpec.builder(classType, "defaultValue").build())
+					.addStatement("return getSharedPreferences().$L($S, defaultValue)",
+					              supportedType.getMethodName(true),
+					              preferenceRealKey);
+
+			if (supportedType == SupportedTypes.STRING) {
+				methodSpecBuilder.addAnnotation(NON_NULL_CLASS_NAME);
+			}
+
+			builder.addMethod(defaultMethodSpecBuilder.build());
+		}
 	}
 
 	private void createEntityPutMethod(TypeSpec.Builder builder, TypeName classType, String annotationKey, String preferenceRealKey,

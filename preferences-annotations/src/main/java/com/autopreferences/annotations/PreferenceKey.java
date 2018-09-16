@@ -12,4 +12,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface PreferenceKey {
 	String value();
+
+	boolean generateDefaultOverloadMethod() default true;
 }
