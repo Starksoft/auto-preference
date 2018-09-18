@@ -1,7 +1,7 @@
-# auto-preference [![Build Status](https://travis-ci.org/Starksoft/auto-preference.svg?branch=master)](https://travis-ci.org/Starksoft/auto-preference)
+# auto-preference
 ======
 
-Current version 1.0.5
+Current version 1.0.5 [![Build Status](https://travis-ci.org/Starksoft/auto-preference.svg?branch=master)](https://travis-ci.org/Starksoft/auto-preference)
 --------
 
 Auto generated SharedPreferences based on @SharedPreference annotation.
