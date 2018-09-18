@@ -66,8 +66,8 @@ artifacts {
 }
 
 bintray {
-	user = property('user')
-	key = property('key')
+	user = System.getenv('user')
+	key = System.getenv('key')
 
 	configurations = ['archives']
 
