@@ -1,4 +1,4 @@
-# auto-preference 1.0.2 ![Build status](https://travis-ci.org/Starksoft/auto-preference.svg?branch=master)
+# auto-preference ![Build status](https://travis-ci.org/Starksoft/auto-preference.svg?branch=master)
 
 gradle:
 --------
