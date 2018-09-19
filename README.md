@@ -3,12 +3,16 @@
 Auto generated wrapper over standard SharedPreferences based on `@SharedPreference` annotation.
 On each filed with `@PreferenceKey("name")` annotation will be generated methods:
 `getName()`
+
 `getName(defaultValue)`
+
 `containsName()`
+
 `removeName()`
+
 `putName(name)`
 
-You can choose where to save SharedPreferences: DefaultSharedPreferences or separeate Preference file by setting defaultSharedPreferences to false for separate file or true to use DefaultSharedPreferences (default)
+You can choose where to save SharedPreferences: DefaultSharedPreferences or separeate Preference file by setting `defaultSharedPreferences` to false for separate file or true to use DefaultSharedPreferences (default)
 
 Usage
 --------
