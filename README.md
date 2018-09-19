@@ -1,4 +1,4 @@
-# auto-preference 1.0.5 [![Build Status](https://travis-ci.org/Starksoft/auto-preference.svg?branch=master)](https://travis-ci.org/Starksoft/auto-preference)
+# auto-preference 1.0.5 [![Build Status](https://travis-ci.org/Starksoft/auto-preference.svg?branch=master)](https://travis-ci.org/Starksoft/auto-preference) [ ![Download](https://api.bintray.com/packages/edwardstark/AutoPreference/preferences-compiler/images/download.svg) ](https://bintray.com/edwardstark/AutoPreference/preferences-compiler/_latestVersion)
 
 Auto generated SharedPreferences based on *@SharedPreference* annotation.
 
