@@ -1,8 +1,14 @@
-# auto-preference 1.0.5 [![Build Status](https://travis-ci.org/Starksoft/auto-preference.svg?branch=master)](https://travis-ci.org/Starksoft/auto-preference) [![compiler](https://api.bintray.com/packages/edwardstark/AutoPreference/preferences-compiler/images/download.svg "compiler") ](https://bintray.com/edwardstark/AutoPreference/preferences-compiler/_latestVersion) [![annotations](https://api.bintray.com/packages/edwardstark/AutoPreference/preferences-annotations/images/download.svg "annotations")](https://bintray.com/edwardstark/AutoPreference/preferences-annotations/_latestVersion)
+# Auto preference [![Build Status](https://travis-ci.org/Starksoft/auto-preference.svg?branch=master)](https://travis-ci.org/Starksoft/auto-preference) [![compiler](https://api.bintray.com/packages/edwardstark/AutoPreference/preferences-compiler/images/download.svg "compiler") ](https://bintray.com/edwardstark/AutoPreference/preferences-compiler/_latestVersion) [![annotations](https://api.bintray.com/packages/edwardstark/AutoPreference/preferences-annotations/images/download.svg "annotations")](https://bintray.com/edwardstark/AutoPreference/preferences-annotations/_latestVersion)
 
-Auto generated SharedPreferences based on *@SharedPreference* annotation.
+Auto generated wrapper over standard SharedPreferences based on `@SharedPreference` annotation.
+On each filed with `@PreferenceKey("name")` annotation will be generated methods:
+`getName()`
+`getName(defaultValue)`
+`containsName()`
+`removeName()`
+`putName(name)`
 
-You can choose where to save SharedPreferences: DefaultSharedPreferences or separeate Preference file
+You can choose where to save SharedPreferences: DefaultSharedPreferences or separeate Preference file by setting defaultSharedPreferences to false for separate file or true to use DefaultSharedPreferences (default)
 
 Usage
 --------
