@@ -2,6 +2,7 @@
 
 Auto generated wrapper over standard SharedPreferences based on `@SharedPreference` annotation.
 On each filed with `@PreferenceKey("name")` annotation will be generated methods:
+
 `getName()`
 
 `getName(defaultValue)`
@@ -11,6 +12,26 @@ On each filed with `@PreferenceKey("name")` annotation will be generated methods
 `removeName()`
 
 `putName(name)`
+
+Also will be generated method `removeAll()` & `isEmpty()`
+
+
+```java
+  public void removeAll() {
+    SharedPreferences.Editor editor = getSharedPreferences().edit();
+    editor.remove("default_id");
+    editor.remove("default_name");
+    editor.remove("default_enabled");
+    editor.commit();
+  }
+
+  public boolean isEmpty() {
+    SharedPreferences sharedPreferences = getSharedPreferences();
+    return !sharedPreferences.contains("default_id") && !sharedPreferences.contains("default_name") && !sharedPreferences.contains("default_enabled") ;}
+  
+
+```
+
 
 You can choose where to save SharedPreferences: DefaultSharedPreferences or separeate Preference file by setting `defaultSharedPreferences` to false for separate file or true to use DefaultSharedPreferences (default)
 
