@@ -6,7 +6,7 @@ android:
 
 branches:
   only:
-  - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
+  - master
 
 script:
   - ./gradlew install

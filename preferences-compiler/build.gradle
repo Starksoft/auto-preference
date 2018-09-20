@@ -15,7 +15,7 @@ targetCompatibility = "1.8"
 ext.artifact = [
 		'groupId': 'com.autopreference',
 		'id'     : 'preferences-compiler',
-		'version': '1.0.7',
+		'version': '1.0.8',
 		'siteUrl': 'https://github.com/Starksoft/auto-preference',
 		'gitUrl' : 'https://github.com/Starksoft/auto-preference.git'
 ]
