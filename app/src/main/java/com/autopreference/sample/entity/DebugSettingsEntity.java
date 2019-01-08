@@ -1,7 +1,7 @@
 package com.autopreference.sample.entity;
 
-import com.autopreferences.annotations.PreferenceKey;
-import com.autopreferences.annotations.SharedPreference;
+import ru.starksoft.autopreferences.PreferenceKey;
+import ru.starksoft.autopreferences.SharedPreference;
 
 @SharedPreference(name = "debugSettings")
 public final class DebugSettingsEntity {

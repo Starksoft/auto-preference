@@ -2,8 +2,8 @@ package com.autopreference.sample.entity;
 
 import android.support.annotation.NonNull;
 
-import com.autopreferences.annotations.PreferenceKey;
-import com.autopreferences.annotations.SharedPreference;
+import ru.starksoft.autopreferences.PreferenceKey;
+import ru.starksoft.autopreferences.SharedPreference;
 
 @SharedPreference(name = "user", defaultSharedPreferences = false)
 public final class UserEntity {

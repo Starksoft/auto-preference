@@ -1,6 +1,6 @@
-package com.autopreferences.compiler;
+package ru.starksoft.autopreferences.compiler;
 
-import com.autopreferences.annotations.SharedPreference;
+import ru.starksoft.autopreferences.SharedPreference;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.CodeBlock;
 import com.squareup.javapoet.FieldSpec;
@@ -25,7 +25,7 @@ import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 import javax.tools.Diagnostic;
 
-@SupportedAnnotationTypes({"com.autopreferences.annotations.SharedPreference"})
+@SupportedAnnotationTypes({"ru.starksoft.autopreferences.SharedPreference"})
 public class PreferencesProcessor extends AbstractProcessor {
 
 	static final String TAG = PreferencesProcessor.class.getSimpleName();

@@ -1,11 +1,11 @@
-package com.autopreferences.compiler;
+package ru.starksoft.autopreferences.compiler;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static com.autopreferences.compiler.Common.PREFIX_GET;
-import static com.autopreferences.compiler.Common.PREFIX_PUT;
+import static ru.starksoft.autopreferences.compiler.Common.PREFIX_GET;
+import static ru.starksoft.autopreferences.compiler.Common.PREFIX_PUT;
 
 enum SupportedTypes {
 

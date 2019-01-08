@@ -13,11 +13,12 @@ sourceCompatibility = "1.8"
 targetCompatibility = "1.8"
 
 ext.artifact = [
-		'groupId': 'com.autopreference',
+		'groupId': 'ru.starksoft',
 		'id'     : 'preferences-compiler',
-		'version': '1.0.8',
+		'version': '1.0.9',
 		'siteUrl': 'https://github.com/Starksoft/auto-preference',
-		'gitUrl' : 'https://github.com/Starksoft/auto-preference.git'
+		'gitUrl' : 'https://github.com/Starksoft/auto-preference.git',
+		'repo'   : 'android-maven'
 ]
 
 version = artifact.version
@@ -49,7 +50,6 @@ install {
 	}
 }
 
-
 task sourcesJar(type: Jar, dependsOn: classes) {
 	classifier = 'sources'
 	from sourceSets.main.allSource
@@ -70,12 +70,12 @@ bintray {
 	key = System.getenv('key')
 
 	configurations = ['archives']
-
 	pkg {
-		repo = "AutoPreference"
+		repo = artifact.repo
 		name = artifact.id
 		websiteUrl = artifact.siteUrl
 		vcsUrl = artifact.gitUrl
+		userOrg = artifact.userOrg
 		licenses = ['Apache-2.0']
 		publish = true
 		version {

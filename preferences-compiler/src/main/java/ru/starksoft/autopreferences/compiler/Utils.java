@@ -1,6 +1,6 @@
-package com.autopreferences.compiler;
+package ru.starksoft.autopreferences.compiler;
 
-import com.autopreferences.annotations.SharedPreference;
+import ru.starksoft.autopreferences.SharedPreference;
 
 import java.util.List;
 

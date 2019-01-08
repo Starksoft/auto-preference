@@ -1,4 +1,4 @@
-package com.autopreferences.annotations;
+package ru.starksoft.autopreferences;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -3,7 +3,7 @@ package com.autopreference.sample;
 import android.app.Application;
 import android.support.annotation.NonNull;
 
-import com.autopreferences.build.AppPreferences;
+import ru.starksoft.autopreferences.build.AppPreferences;
 
 public class ApplicationInstance extends Application {
 

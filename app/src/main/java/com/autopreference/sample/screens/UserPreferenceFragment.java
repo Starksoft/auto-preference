@@ -15,7 +15,8 @@ import android.widget.EditText;
 
 import com.autopreference.sample.ApplicationInstance;
 import com.autopreference.sample.R;
-import com.autopreferences.build.UserPreferences;
+
+import ru.starksoft.autopreferences.build.UserPreferences;
 
 public final class UserPreferenceFragment extends Fragment {
 

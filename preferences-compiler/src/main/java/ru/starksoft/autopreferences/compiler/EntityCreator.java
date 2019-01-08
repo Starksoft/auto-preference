@@ -1,7 +1,7 @@
-package com.autopreferences.compiler;
+package ru.starksoft.autopreferences.compiler;
 
-import com.autopreferences.annotations.PreferenceKey;
-import com.autopreferences.annotations.SharedPreference;
+import ru.starksoft.autopreferences.PreferenceKey;
+import ru.starksoft.autopreferences.SharedPreference;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.CodeBlock;
 import com.squareup.javapoet.FieldSpec;
@@ -23,9 +23,9 @@ import javax.lang.model.element.Name;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.element.VariableElement;
 
-import static com.autopreferences.compiler.Common.NON_NULL_CLASS_NAME;
-import static com.autopreferences.compiler.Common.PREFIX_GET;
-import static com.autopreferences.compiler.Common.PREFIX_IS;
+import static ru.starksoft.autopreferences.compiler.Common.NON_NULL_CLASS_NAME;
+import static ru.starksoft.autopreferences.compiler.Common.PREFIX_GET;
+import static ru.starksoft.autopreferences.compiler.Common.PREFIX_IS;
 
 final class EntityCreator {
 
