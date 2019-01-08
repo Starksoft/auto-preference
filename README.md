@@ -98,6 +98,6 @@ Download
 --------
 Gradle:
 ```groovy
-implementation 'com.autopreference:preferences-annotations:X.X.X'
-annotationProcessor 'com.autopreference:preferences-compiler:X.X.X'
+implementation 'ru.starksoft:preferences-annotations:X.X.X'
+annotationProcessor 'ru.starksoft:preferences-compiler:X.X.X'
 ```
