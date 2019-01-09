@@ -1,6 +1,7 @@
 apply plugin: 'java-library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
+apply plugin: 'org.jetbrains.kotlin.jvm'
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -12,7 +13,7 @@ targetCompatibility = "1.8"
 ext.artifact = [
 		'groupId': 'ru.starksoft',
 		'id'     : 'preferences-annotations',
-		'version': '1.0.9',
+		'version': '1.1.0',
 		'siteUrl': 'https://github.com/Starksoft/auto-preference',
 		'gitUrl' : 'https://github.com/Starksoft/auto-preference.git',
 		'repo'   : 'android-maven'
