@@ -16,10 +16,12 @@ import android.widget.EditText;
 import com.autopreference.sample.App;
 import com.autopreference.sample.R;
 
+import ru.starksoft.autopreferences.build.UserPreferences;
+
 public final class UserPreferenceFragment extends Fragment {
 
 	public static final String TAG = "UserPreferenceFragment";
-	private final UserPreferences userPreferences = App.getAppComponent().getAppPreferences().getUserPreferences();
+	private final UserPreferences userPreferences = App.getAppComponent().getAppPreferencesProvider().getData().getUserPreferences();
 
 	@NonNull
 	public static UserPreferenceFragment newInstance() {

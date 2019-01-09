@@ -2,7 +2,7 @@ package com.autopreference.sample.di.component
 
 import com.autopreference.sample.App
 import com.autopreference.sample.di.module.AppModule
-import com.autopreference.sample.persistence.prefs.AppPreferences
+import com.autopreference.sample.di.module.AppPreferencesProvider
 import dagger.Component
 import javax.inject.Singleton
 
@@ -12,5 +12,5 @@ interface AppComponent {
 
 	fun inject(application: App)
 
-	fun getAppPreferences(): AppPreferences
+	fun getAppPreferencesProvider(): AppPreferencesProvider
 }

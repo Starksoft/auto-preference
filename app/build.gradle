@@ -24,7 +24,7 @@ android {
 	sourceSets {
 		main {
 			java {
-				srcDir "${buildDir.absolutePath}/generated/source/kaptKotlin/"
+				srcDirs("${buildDir.absolutePath}/generated/source/kaptKotlin/", "${buildDir.absolutePath}/generated/source/kapt/")
 			}
 		}
 	}
