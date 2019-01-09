@@ -1,4 +1,4 @@
-package com.autopreference.sample.entity
+package com.autopreference.sample.persistence.prefs.entity
 
 import ru.starksoft.autopreferences.PreferenceKey
 import ru.starksoft.autopreferences.SharedPreference

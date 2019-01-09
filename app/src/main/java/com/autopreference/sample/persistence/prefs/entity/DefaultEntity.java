@@ -1,33 +1,26 @@
-package com.autopreference.sample.entity;
+package com.autopreference.sample.persistence.prefs.entity;
 
 import android.support.annotation.NonNull;
 
 import ru.starksoft.autopreferences.PreferenceKey;
 import ru.starksoft.autopreferences.SharedPreference;
 
-@SharedPreference(name = "user", defaultSharedPreferences = false)
-public final class UserEntity {
+@SharedPreference(name = "default")
+public final class DefaultEntity {
 
 	@PreferenceKey("id") private final int id;
 	@PreferenceKey("name") @NonNull private final String name;
 	@PreferenceKey("enabled") private final boolean enabled;
-	@PreferenceKey("createdAt") private final long date;
-	@PreferenceKey("floatValue") private final float floatField;
-	//	private Integer idWrapped;
-	//	private Object invalidField;
 
-	public UserEntity(int id, @NonNull String name, boolean enabled, long date, float floatField) {
+	public DefaultEntity(int id, @NonNull String name, boolean enabled) {
 		this.id = id;
 		this.name = name;
 		this.enabled = enabled;
-		this.date = date;
-		this.floatField = floatField;
 	}
 
 	@Override
 	public String toString() {
-		return "UserEntity{" + "id=" + id + ", name='" + name + '\'' + ", enabled=" + enabled + ", date=" + date + ", floatField=" +
-				floatField + '}';
+		return "DefaultEntity{" + "id=" + id + ", name='" + name + '\'' + ", enabled=" + enabled + '}';
 	}
 
 	@Override
@@ -39,18 +32,12 @@ public final class UserEntity {
 			return false;
 		}
 
-		UserEntity that = (UserEntity) o;
+		DefaultEntity that = (DefaultEntity) o;
 
 		if (id != that.id) {
 			return false;
 		}
 		if (enabled != that.enabled) {
-			return false;
-		}
-		if (date != that.date) {
-			return false;
-		}
-		if (Float.compare(that.floatField, floatField) != 0) {
 			return false;
 		}
 		return name.equals(that.name);
@@ -61,12 +48,11 @@ public final class UserEntity {
 		int result = id;
 		result = 31 * result + name.hashCode();
 		result = 31 * result + (enabled ? 1 : 0);
-		result = 31 * result + (int) (date ^ (date >>> 32));
-		result = 31 * result + (floatField != +0.0f ? Float.floatToIntBits(floatField) : 0);
 		return result;
 	}
 
 	public int getId() {
+
 		return id;
 	}
 
@@ -77,13 +63,5 @@ public final class UserEntity {
 
 	public boolean isEnabled() {
 		return enabled;
-	}
-
-	public long getDate() {
-		return date;
-	}
-
-	public float getFloatField() {
-		return floatField;
 	}
 }

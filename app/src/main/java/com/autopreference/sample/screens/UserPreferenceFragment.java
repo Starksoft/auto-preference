@@ -13,15 +13,13 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
-import com.autopreference.sample.ApplicationInstance;
+import com.autopreference.sample.App;
 import com.autopreference.sample.R;
-
-import ru.starksoft.autopreferences.build.UserPreferences;
 
 public final class UserPreferenceFragment extends Fragment {
 
 	public static final String TAG = "UserPreferenceFragment";
-	private final UserPreferences userPreferences = ApplicationInstance.getInstance().getAppPreferences().getUserPreferences();
+	private final UserPreferences userPreferences = App.getAppComponent().getAppPreferences().getUserPreferences();
 
 	@NonNull
 	public static UserPreferenceFragment newInstance() {
