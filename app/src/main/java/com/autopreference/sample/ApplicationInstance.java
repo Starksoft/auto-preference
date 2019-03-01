@@ -1,7 +1,7 @@
 package com.autopreference.sample;
 
 import android.app.Application;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import ru.starksoft.autopreferences.build.AppPreferences;
 

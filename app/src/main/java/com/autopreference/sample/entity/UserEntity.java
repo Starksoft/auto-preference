@@ -1,6 +1,6 @@
 package com.autopreference.sample.entity;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import ru.starksoft.autopreferences.PreferenceKey;
 import ru.starksoft.autopreferences.SharedPreference;

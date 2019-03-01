@@ -18,7 +18,7 @@ public final class Common {
 	static final String PREFIX_GET = "get";
 	static final String PREFIX_IS = "is";
 	static final ClassName SHARED_PREFERENCES_CLASS_NAME = ClassName.get("android.content", "SharedPreferences");
-	static final ClassName NON_NULL_CLASS_NAME = ClassName.get("android.support.annotation", "NonNull");
+	static final ClassName NON_NULL_CLASS_NAME = ClassName.get("androidx.annotation", "NonNull");
 	static final String PACKAGE_NAME = "ru.starksoft.autopreferences.build";
 	static final String CLASS_NAME_APP_PREFERENCES = "AppPreferences";
 	static final ClassName PREFERENCE_MANAGER_CLASS_NAME = ClassName.get("android.preference", "PreferenceManager");
