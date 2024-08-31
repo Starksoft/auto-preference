@@ -149,7 +149,7 @@ final class EntityCreator {
 				addStatement("return getSharedPreferences().$L($S, $L)",
 				             supportedType.getMethodName(true),
 				             preferenceRealKey,
-				             supportedType.getDefaultValue());
+						supportedType.defaultValue);
 
 		if (supportedType == SupportedTypes.STRING) {
 			methodSpecBuilder.addAnnotation(NON_NULL_CLASS_NAME);
