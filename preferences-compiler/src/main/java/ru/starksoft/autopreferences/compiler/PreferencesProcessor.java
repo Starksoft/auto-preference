@@ -28,7 +28,7 @@ import javax.tools.Diagnostic;
 @SupportedAnnotationTypes({"ru.starksoft.autopreferences.SharedPreference"})
 public class PreferencesProcessor extends AbstractProcessor {
 
-	static final String TAG = PreferencesProcessor.class.getSimpleName();
+	static final String TAG = "PreferencesProcessor";
 	private ProcessingEnvironment processingEnvironment;
 
 	public ProcessingEnvironment getProcessingEnvironment() {
