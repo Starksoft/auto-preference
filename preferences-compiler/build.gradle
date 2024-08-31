@@ -19,7 +19,7 @@ dependencies {
 ext.artifactData = [
         'groupId'    : 'ru.starksoft',
         'id'         : 'preferences-compiler',
-        'version'    : '3.0.0',
+        'version'    : '3.0.1',
         'siteUrl'    : 'https://github.com/Starksoft/auto-preference',
         'gitUrl'     : 'https://github.com/Starksoft/auto-preference.git',
         'description': 'Auto Preference Generator library'
