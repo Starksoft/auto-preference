@@ -12,15 +12,15 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:8.6.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
-//		classpath 'com.android.tools.build:gradle:3.5.4'
-//		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-//		classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        classpath "io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.30.0"
     }
 }
 
 plugins {
     id 'org.jetbrains.kotlin.jvm'
 }
+
+apply plugin: 'io.codearte.nexus-staging'
 
 allprojects {
     repositories {
@@ -32,13 +32,3 @@ allprojects {
         maven { url "https://repo1.maven.org/maven2" }
     }
 }
-
-
-//plugins {
-//	id "com.jfrog.bintray" version "1.7.3"
-//}
-
-
-//task clean(type: Delete) {
-//    delete rootProject.buildDir
-//}

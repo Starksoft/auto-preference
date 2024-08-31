@@ -1,0 +1,83 @@
+import java.nio.charset.Charset
+
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+group = artifactData.groupId
+version = artifactData.version
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    archiveClassifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    archiveClassifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+publishing {
+    publications {
+        library(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+
+            groupId = artifactData.groupId
+            artifactId = artifactData.id
+            version = artifactData.version
+
+            pom {
+                name = artifactData.id
+                description = artifactData.description
+                url = artifactData.siteUrl
+
+                licenses {
+                    license {
+                        name = "GPL-3.0"
+                        url = "https://www.gnu.org/licenses/gpl.txt"
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'Starksoft'
+                        name = 'Edward Anisonyan'
+                        email = '4238662+Starksoft@users.noreply.github.com'
+                    }
+                }
+
+                scm {
+                    connection = artifactData.gitUrl
+                    developerConnection = artifactData.gitUrl
+                    url = artifactData.siteUrl
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+            credentials {
+                username = "$System.env.ossrhUsername"
+                password = "$System.env.ossrhPassword"
+            }
+        }
+    }
+}
+
+nexusStaging {
+    username = System.getenv("ossrhUsername")
+    password = System.getenv("ossrhPassword")
+    packageGroup = "ru.starksoft"
+}
+
+signing {
+    def signingKey = new String(Base64.decoder.decode(System.getenv('GPG_KEY').getBytes(Charset.forName("UTF-8"))))
+    def signingPassword = System.getenv('GPG_PASSPHRASE')
+
+    useInMemoryPgpKeys(signingKey, signingPassword)
+    sign publishing.publications
+}

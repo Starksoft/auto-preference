@@ -10,6 +10,9 @@ import javax.annotation.processing.ProcessingEnvironment
 import javax.lang.model.element.Modifier
 import javax.tools.Diagnostic
 
+/*
+
+ */
 internal object Common {
 
     @JvmField

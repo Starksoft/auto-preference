@@ -1,93 +1,32 @@
 apply plugin: 'java-library'
 apply plugin: 'kotlin'
-//apply plugin: 'com.github.dcendents.android-maven'
-//apply plugin: 'com.jfrog.bintray'
 
 java {
-	sourceCompatibility = JavaVersion.VERSION_1_8
-	targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 kotlin {
-	jvmToolchain(8)
+    jvmToolchain(8)
 }
 
 dependencies {
-	implementation fileTree(dir: 'libs', include: ['*.jar'])
-	implementation project(path: ':preferences-annotations')
-
-	implementation 'com.squareup:javapoet:1.13.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(path: ':preferences-annotations')
+    implementation 'com.squareup:javapoet:1.13.0'
 }
 
-ext.artifact = [
-		'groupId': 'ru.starksoft',
-		'id'     : 'preferences-compiler',
-		'version': '3.0.0',
-		'siteUrl': 'https://github.com/Starksoft/auto-preference',
-		'gitUrl' : 'https://github.com/Starksoft/auto-preference.git',
-		'repo'   : 'android-maven'
+ext.artifactData = [
+        'groupId'    : 'ru.starksoft',
+        'id'         : 'preferences-compiler',
+        'version'    : '3.0.0',
+        'siteUrl'    : 'https://github.com/Starksoft/auto-preference',
+        'gitUrl'     : 'https://github.com/Starksoft/auto-preference.git',
+        'description': 'Auto Preference Generator library'
 ]
 
-version = artifact.version
-group = artifact.groupId
+project.archivesBaseName = artifactData.id
 
+// ./gradlew :preferences-compiler:build publishLibraryPublicationToSonatypeRepository closeAndReleaseRepository
+apply from: '../gradle/publish-mavencentral.gradle'
 
-//install {
-//	repositories.mavenInstaller {
-//		pom.project {
-//			packaging 'jar'
-//			groupId artifact.groupId
-//			artifactId artifact.id
-//			version artifact.version
-//			name artifact.id // pom.project.name must be same as bintray.pkg.name
-//			url artifact.siteUrl
-//			inceptionYear '2018' // HARDCODED
-//			licenses {
-//				license { // HARDCODED
-//					name 'GPL-3.0'
-//					url 'https://www.gnu.org/licenses/gpl.txt'
-//					distribution 'repo'
-//				}
-//			}
-//			scm {
-//				connection artifact.gitUrl
-//				developerConnection artifact.gitUrl
-//				url artifact.siteUrl
-//			}
-//		}
-//	}
-//}
-//
-//task sourcesJar(type: Jar, dependsOn: classes) {
-//	classifier = 'sources'
-//	from sourceSets.main.allSource
-//}
-//
-//task javadocJar(type: Jar, dependsOn: javadoc) {
-//	classifier = 'javadoc'
-//	from javadoc.destinationDir
-//}
-//
-//artifacts {
-//	archives sourcesJar
-//	archives javadocJar
-//}
-
-//bintray {
-//	user = System.getenv('user')
-//	key = System.getenv('key')
-//
-//	configurations = ['archives']
-//	pkg {
-//		repo = artifact.repo
-//		name = artifact.id
-//		websiteUrl = artifact.siteUrl
-//		vcsUrl = artifact.gitUrl
-//		userOrg = artifact.userOrg
-//		licenses = ['Apache-2.0']
-//		publish = true
-//		version {
-//			name = artifact.version
-//		}
-//	}
-//}

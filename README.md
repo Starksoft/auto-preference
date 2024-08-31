@@ -13,7 +13,7 @@ On each filed with `@PreferenceKey("name")` annotation will be generated methods
 
 `putName(name)`
 
-Also will be generated method `removeAll()` & `isEmpty()`
+Also methods `removeAll()` & `isEmpty()` will be generated
 
 
 ```java
